@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block pageContent %}
+<h1 class="greeting">Welcome @{{ name }}!</h1>
+<div class="tweet">
+    <form action="{{ url_for('dashboard') }}" method="post" enctype="multipart/form-data">
+        {{tweet.csrf_token}}
+        <div style="display: flex;">
+            <div id="id01" class="w3-modal" style="display: none;">
+                <div class='w3-modal-content upload_window' style="padding: 30px; background-color: dodgerblue;">
+                  <div class="w3-container" style="background-color: dodgerblue;">
+                    <img src="{{ url_for('static', filename='Images/SVG/twitter.svg') }}" alt="" style="width: 50px; height: auto; margin-bottom: 20px;">
+                    <div class="form-group files">
+                        {{tweet.tweet_img}}
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        {{tweet.tweet(class='tweet_pannel',placeholder="What's on your mind?")}}
+        {{tweet.submit(class='submit_tweet')}}
+
+    </form>
+</div>
+
+<div class="timeline">
+    {% for row in timeline.items %}
+        {% if row.post_id != None %}
+            <div class="tweet">
+                <div class="userTweet">
+                    <div class="meta_tweet">
+                        <img class="thumbnail" src="{{ url_for('static', filename='Images/Users/profile_pics/' + row.from_post.author.image_file) }}" alt="">
+                        <div>
+                            <h4 style="margin-bottom: 0px;"><a class="username" href="{{ url_for('viewProfile',account_id=row.from_post.author.id) }}"> @{{ row.from_post.author.username }}</a></h4>
+                            <p style="font-size: 12px; margin-top: 5px;">
+                                <span style="font-weight: bold; color: dodgerblue;">Posted on </span>
+                                {{ row.from_post.stamp }}
+                            </p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px;">{{ row.from_post.tweet }}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <div class="pagination">
+        {% for page_num in timeline.iter_pages(left_edge=2,right_edge=2,left_current=1,right_current=2) %}
+            {% if page_num %}
+                {% if timeline.page == page_num %}
+                    <a class="active_page" href="{{ url_for('dashboard',page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                    <a class='pages' href="{{ url_for('dashboard',page=page_num) }}">{{ page_num }}</a>
+                {% endif %}
+            {% else %}
+                ...
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
