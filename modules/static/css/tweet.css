@@ -33,20 +33,6 @@
 .meta_tweet {
     display: flex;
 }
-.image_upload {
-    background-color: #16202c;
-    border: none;
-}
-.image_upload:hover {
-    cursor: pointer;
-}
-.upload_window {
-    background-color:dodgerblue;
-    padding:50px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 
 .files input {
     outline: 2px dashed #92b0b3;
@@ -98,14 +84,4 @@
     font-weight: 600;
     text-transform: capitalize;
     text-align: center;
-}
-
-.tweet_image {
-    height: 200px;
-    width: auto;
-    border-radius: 10px;
-    margin: 10px auto 20px;
-}
-.tweet_image:hover {
-    cursor: pointer;
 }

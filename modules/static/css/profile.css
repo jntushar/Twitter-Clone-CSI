@@ -19,20 +19,7 @@
     height:300px;
     position: absolute;
 }
-.edit_profile {
-    color: rgba(29,161,242,1);
-    padding: 10px 15px;
-    font-weight: bold;
-    border-radius: 20px;
-    border: 1px solid rgba(29,161,242,1);
-    margin-top: auto;
-    margin-bottom: auto;
-}
-.edit_profile:hover {
-    background-color: rgba(29,161,242,1);
-    color: whitesmoke;
-    transition: 0.2s;
-}
+
 .seperator {
     padding-left: 50px;
     margin-top: 30px;
@@ -51,29 +38,7 @@
     font-size: 17px;
     margin-top: 10px;
 }
-.update_field {
-    width: 90%;
-    padding: 15px 30px;
-    background-color: rgba(29,161,242,0.2);
-    border-radius: 20px;
-    border: none;
-    margin-bottom: 10px;
-    color: whitesmoke;
-    font-size: 17px;
-}
-.update_save {
-    background-color: rgba(29,161,242,1);
-    color: whitesmoke;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-weight: bold;
-    border: none;
-}
-.update_save:hover {
-    background-color: rgba(29,161,242,0.2);
-    transition: 0.2s;
-    cursor: pointer;
-}
+
 .profile_section {
     display: flex;
 }
