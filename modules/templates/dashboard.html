@@ -5,18 +5,6 @@
 <div class="tweet">
     <form action="{{ url_for('dashboard') }}" method="post" enctype="multipart/form-data">
         {{tweet.csrf_token}}
-        <div style="display: flex;">
-            <div id="id01" class="w3-modal" style="display: none;">
-                <div class='w3-modal-content upload_window' style="padding: 30px; background-color: dodgerblue;">
-                  <div class="w3-container" style="background-color: dodgerblue;">
-                    <img src="{{ url_for('static', filename='Images/SVG/twitter.svg') }}" alt="" style="width: 50px; height: auto; margin-bottom: 20px;">
-                    <div class="form-group files">
-                        {{tweet.tweet_img}}
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
         {{tweet.tweet(class='tweet_pannel',placeholder="What's on your mind?")}}
         {{tweet.submit(class='submit_tweet')}}
 

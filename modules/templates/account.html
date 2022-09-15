@@ -8,15 +8,9 @@
             <img src="{{ profile }}" alt="" class="profile_img">
             <h2>@{{ current_user.username }}</h2>
             <p class="light">{{ current_user.email }}</p>
-            {% if current_user.bio %}
-                <p style="margin-bottom: 2px;">{{ current_user.bio }}</p>
-            {% endif %}
 
             <div style="display: flex; color: gray;">
-                <p><img src="https://www.flaticon.com/svg/static/icons/svg/3003/3003280.svg" style="width: 17px; height: auto; margin-right: 10px;" alt="">Joined on {{ current_user.date }}</p>
-                {% if current_user.bday %}
-                    <p><img src="https://www.flaticon.com/svg/static/icons/svg/3159/3159408.svg" style="width: 17px; height: auto; margin-right: 10px; margin-left: 20px;" alt="">Born {{ current_user.bday }}</p>
-                {% endif %}
+                <p>Joined on {{ current_user.date }}</p>
             </div>
         </div>
 
@@ -38,15 +32,6 @@
                     </div>
                 </div>
                 <p style="margin-top: 5px;">{{ post.tweet }}</p>
-                {% if post.post_img %}
-                    <img onclick="document.getElementById('modal_image_tweet').style.display='block'" src="{{ url_for('static', filename='Images/Tweets/' + post.post_img) }}" class="tweet_image" alt="">
-                    <div id="modal_image_tweet" class="w3-modal" onclick="this.style.display='none'">
-                        <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-                        <div class="w3-modal-content w3-animate-zoom">
-                            <img src="{{ url_for('static', filename='Images/Tweets/' + post.post_img) }}" style="width:100%">
-                        </div>
-                    </div>
-                {% endif %}
             </div>
         </div>
 
