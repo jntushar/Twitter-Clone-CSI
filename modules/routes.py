@@ -30,7 +30,7 @@ def home():
         user_info = User_mgmt.query.filter_by(username=form_login.username.data).first()
         if user_info:
             if check_password_hash(user_info.password, form_login.password.data):
-                login_user(user_info, remember=form_login.remember.data)
+                login_user(user_info)
                 return redirect(url_for('dashboard'))
             else:
                 return render_template('errorP.html')

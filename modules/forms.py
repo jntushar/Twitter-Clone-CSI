@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField, TextAreaField
+from wtforms import StringField, SubmitField, PasswordField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length, ValidationError
 from modules.modals import User_mgmt
 
@@ -24,7 +24,6 @@ class Signup(FlaskForm):
 class Login(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-    remember = BooleanField('Remember me')
     login = SubmitField('Login')
 
 
