@@ -11,6 +11,48 @@
             <div style="display: flex; color: gray;">
                 <p>Joined on {{ user.date }}</p>
             </div>
+            <!-- Following Modal Button -->
+            <button id="followingBtn" style="background: none; font-weight: bold; font-size: 17px; color: dodgerblue; border: none; padding: 0px 4px;">Following</button>
+            <!-- Followers Modal Button -->
+            <button id="followersBtn" style="background: none; font-weight: bold; font-size: 17px; color: dodgerblue; border: none; padding: 0px 4px;">Followers</button>
+
+                        <!-- Following Modal -->
+            <div id="followingModal" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span class="following-close">&times;</span>
+                  <h2>Following</h2>
+                </div>
+                <div class="modal-body">
+                    {% for user in following_users.items %}
+                        <h5><a href="{{ url_for('viewProfile',account_id=user.id) }}" style="color: #00ACEE">@{{ user.username }}</a></h5>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            <!-- Followers Modal -->
+            <div id="followersModal" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span class="followers-close">&times;</span>
+                  <h2>Followers</h2>
+                </div>
+                <div class="modal-body">
+                    {% for user in followers_user.items %}
+                        <h5><a href="{{ url_for('viewProfile',account_id=user.id) }}" style="color: #00ACEE">@{{ user.username }}</a></h5>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div>
+            <form action="{{ url_for('update_follow',account_id=user.id) }}" method="post">
+                <button type="submit" class="submit_follow">{{ follow_status }}</button>
+            </form>
         </div>
     </div>
 </div>
@@ -49,5 +91,41 @@
     </div>
 
 </div>
+
+<script>
+    //Following
+var followingModal = document.getElementById("followingModal");
+var followingBtn = document.getElementById("followingBtn");
+
+var followingspan = document.getElementsByClassName("following-close")[0];
+followingBtn.onclick = function() {
+  followingModal.style.display = "block";
+}
+followingspan.onclick = function() {
+  followingModal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == followingModal) {
+    followingModal.style.display = "none";
+  }
+}
+
+    //Followers
+var followersModal = document.getElementById("followersModal");
+var followersBtn = document.getElementById("followersBtn");
+
+var followersspan = document.getElementsByClassName("followers-close")[0];
+followersBtn.onclick = function() {
+  followersModal.style.display = "block";
+}
+followersspan.onclick = function() {
+  followersModal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == followersModal) {
+    followersModal.style.display = "none";
+  }
+}
+</script>
 
 {% endblock %}

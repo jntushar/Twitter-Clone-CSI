@@ -9,8 +9,8 @@ def load_user(user_id):
 
 class User_mgmt(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(15), nullable=False,unique=True)
-    email = db.Column(db.String(50), nullable=False,unique=True)
+    username = db.Column(db.String(15), nullable=False, unique=True)
+    email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     bg_file = db.Column(db.String(20), nullable=False, default='default_bg.jpg')
@@ -19,6 +19,7 @@ class User_mgmt(UserMixin, db.Model):
     bday = db.Column(db.String(10))
 
     posts = db.relationship('Post', backref='author', lazy=True)
+    following = db.relationship('Following', backref='follow', lazy=True)
 
 
 class Post(db.Model):
@@ -27,9 +28,8 @@ class Post(db.Model):
     stamp = db.Column(db.String(20), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user_mgmt.id'), nullable=False)
 
-    timeline = db.relationship('Timeline', backref='from_post', lazy=True)
 
-
-class Timeline(db.Model):
+class Following(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'), default=None)
+    child_id = db.Column(db.Integer, nullable=False)  # following
+    user_id = db.Column(db.Integer, db.ForeignKey('user_mgmt.id'), nullable=False)  # follower

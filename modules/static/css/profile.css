@@ -47,3 +47,18 @@
     margin-left: 10px;
     margin-right: 20px;
 }
+
+.submit_follow {
+    border: none;
+    background-color: dodgerblue;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    margin: 160px 0px 0px 100px;
+}
+.submit_follow:hover {
+    background-color: royalblue;
+    cursor: pointer;
+    transition: 0.2s;
+}

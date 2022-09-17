@@ -7,7 +7,6 @@
         {{tweet.csrf_token}}
         {{tweet.tweet(class='tweet_pannel',placeholder="What's on your mind?")}}
         {{tweet.submit(class='submit_tweet')}}
-
     </form>
 </div>
 
@@ -17,16 +16,16 @@
             <div class="tweet">
                 <div class="userTweet">
                     <div class="meta_tweet">
-                        <img class="thumbnail" src="{{ url_for('static', filename='Images/Users/profile_pics/' + row.from_post.author.image_file) }}" alt="">
+                        <img class="thumbnail" src="{{ url_for('static', filename='Images/Users/profile_pics/' + row.author.image_file) }}" alt="">
                         <div>
-                            <h4 style="margin-bottom: 0px;"><a class="username" href="{{ url_for('viewProfile',account_id=row.from_post.author.id) }}"> @{{ row.from_post.author.username }}</a></h4>
+                            <h4 style="margin-bottom: 0px;"><a class="username" href="{{ url_for('viewProfile',account_id=row.author.id) }}"> @{{ row.author.username }}</a></h4>
                             <p style="font-size: 12px; margin-top: 5px;">
                                 <span style="font-weight: bold; color: dodgerblue;">Posted on </span>
-                                {{ row.from_post.stamp }}
+                                {{ row.stamp }}
                             </p>
                         </div>
                     </div>
-                    <p style="margin-top: 20px;">{{ row.from_post.tweet }}</p>
+                    <p style="margin-top: 20px;">{{ row.tweet }}</p>
                 </div>
             </div>
         {% endif %}
